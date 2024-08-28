@@ -3,9 +3,7 @@ terraform/.terraform/
 terraform/.terraform.lock.hcl
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
-
-# Ignore sensitive files
-terraform/*.tfvars
+terraform/sp.tfvars
 
 # Ignore IDE and editor settings
 .vscode/
