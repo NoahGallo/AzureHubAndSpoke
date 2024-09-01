@@ -52,6 +52,70 @@ module "spokenetwork4" {
     subnet_address_prefix = "23.0.0.0/24"
     }
 
+module "peering_hub_to_spoke1" {
+  source = "./modules/peering"
+  peering_name = "hubtospoke1"
+  resource_group_name = azurerm_resource_group.HubAndSpokeTF.name
+  vnet_name = "hubnetwork"
+  remote_vnet_id = module.spokenetwork1.vnet_id
+}
+
+module "peering_hub_to_spoke2" {
+  source = "./modules/peering"
+  peering_name = "hubtospoke2"
+  resource_group_name = azurerm_resource_group.HubAndSpokeTF.name
+  vnet_name = "hubnetwork"
+  remote_vnet_id = module.spokenetwork2.vnet_id
+}
+
+module "peering_hub_to_spoke3" {
+  source = "./modules/peering"
+  peering_name = "hubtospoke3"
+  resource_group_name = azurerm_resource_group.HubAndSpokeTF.name
+  vnet_name = "hubnetwork"
+  remote_vnet_id = module.spokenetwork3.vnet_id
+}
+
+module "peering_hub_to_spoke4" {
+  source = "./modules/peering"
+  peering_name = "hubtospoke4"
+  resource_group_name = azurerm_resource_group.HubAndSpokeTF.name
+  vnet_name = "hubnetwork"
+  remote_vnet_id = module.spokenetwork4.vnet_id
+}
+
+module "peering_spoke1_to_hub" {
+  source = "./modules/peering"
+  peering_name = "spoke1tohub"
+  resource_group_name = azurerm_resource_group.HubAndSpokeTF.name
+  vnet_name = "spoke1"
+  remote_vnet_id = module.hubnetwork.hub_vnet_id
+}
+
+module "peering_spoke2_to_hub" {
+  source = "./modules/peering"
+  peering_name = "spoke2tohub"
+  resource_group_name = azurerm_resource_group.HubAndSpokeTF.name
+  vnet_name = "spoke2"
+  remote_vnet_id = module.hubnetwork.hub_vnet_id
+}
+
+module "peering_spoke3_to_hub" {
+  source = "./modules/peering"
+  peering_name = "spoke3tohub"
+  resource_group_name = azurerm_resource_group.HubAndSpokeTF.name
+  vnet_name = "spoke3"
+  remote_vnet_id = module.hubnetwork.hub_vnet_id
+}
+
+module "peering_spoke4_to_hub" {
+  source = "./modules/peering"
+  peering_name = "spoke4tohub"
+  resource_group_name = azurerm_resource_group.HubAndSpokeTF.name
+  vnet_name = "spoke4"
+  remote_vnet_id = module.hubnetwork.hub_vnet_id
+}
+
 module "windows_vm_spoke1" {
   source               = "./modules/windows-vm"
   vm_name              = "spoke1-vm"

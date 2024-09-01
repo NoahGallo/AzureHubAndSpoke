@@ -21,7 +21,7 @@ variable "remote_vnet_id" {
 variable "allow_forwarded_traffic" {
   description = "Allow forwarded traffic across the peering"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "allow_gateway_transit" {
