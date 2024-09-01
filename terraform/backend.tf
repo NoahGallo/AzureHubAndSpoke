@@ -15,7 +15,11 @@ terraform {
 }
 
 provider "azurerm" {
-  features {}  # Required for the AzureRM provider but can be left empty
+  features {
+    resource_group {
+       prevent_deletion_if_contains_resources = false
+    }
+  }    
   subscription_id = var.arm_subscription_id
   client_id       = var.arm_client_id
   client_secret   = var.arm_client_secret
